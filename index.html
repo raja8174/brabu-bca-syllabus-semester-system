@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Syllabus - B.R.A. Bihar University, Muzaffarpur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right top, #6a11cb, #2575fc);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .syllabus-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .syllabus-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        h1, h2, h3, h4 {
+            color: #004085;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #4a00e0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 2rem;
+            color: #d32f2f;
+        }
+        h3 {
+            font-size: 1.75rem;
+            color: #00796b;
+        }
+        h4 {
+            font-size: 1.5rem;
+            color: #5d4037;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0f2f7;
+            color: #004085;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        td {
+            background-color: #ffffff;
+            color: #444;
+        }
+        tr:nth-child(even) td {
+            background-color: #f8fafd;
+        }
+        .search-container {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-input {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #a7d9f7;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .search-input:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.2);
+            outline: none;
+        }
+        .search-button {
+            background: linear-gradient(45deg, #2575fc, #6a11cb);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        }
+        .search-results-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            transition: all 0.3s ease-out;
+            border: 2px solid #6a11cb;
+        }
+        .search-results-dialog.show {
+            display: flex;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .search-results-dialog h3 {
+            color: #6a11cb;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .search-results-dialog .close-button {
+            background: #d32f2f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .search-results-dialog .close-button:hover {
+            background: #e57373;
+        }
+        .search-result-item {
+            background-color: #f0f8ff;
+            border-left: 5px solid;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            transition: all 0.2s ease;
+        }
+        .search-result-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-result-item.semester-1 { border-color: #FF5733; }
+        .search-result-item.semester-2 { border-color: #33FF57; }
+        .search-result-item.semester-3 { border-color: #3357FF; }
+        .search-result-item.semester-4 { border-color: #FF33F5; }
+        .search-result-item.semester-5 { border-color: #F5FF33; }
+        .search-result-item.semester-6 { border-color: #33FFF5; }
+
+        .search-result-item strong {
+            color: #004085;
+        }
+        .search-result-item p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 1000;
+            display: none;
+        }
+        .overlay.show {
+            display: block;
+        }
+
+        @keyframes designer-name-animation {
+            0% { transform: translateX(100%); opacity: 0; }
+            20% { transform: translateX(0); opacity: 1; }
+            80% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-100%); opacity: 0; }
+        }
+
+        .designer-name {
+            font-family: cursive; /* Using a generic cursive for broad compatibility */
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: transparent; /* Start transparent */
+            background-image: linear-gradient(to right, #ff00cc, #3333ff, #00ffcc, #ffcc00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: designer-name-animation 10s linear infinite;
+            white-space: nowrap;
+            margin-top: 1rem;
+            overflow: hidden; /* Hide overflow during animation */
+            padding: 0 1rem; /* Add some padding to see the full text */
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .syllabus-section {
+                padding: 1.5rem;
+            }
+            .search-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .search-input {
+                width: 95%;
+            }
+            .search-results-dialog {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="text-4xl font-extrabold text-center">B.R.A. Bihar University, Muzaffarpur</h1>
+            <h2 class="text-2xl font-semibold text-center mt-2">BCA (Bachelor of Computer Applications) - Semester System</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search syllabus content...">
+                <button id="searchButton" class="search-button">Search</button>
+            </div>
+            <div class="designer-name">
+                𝓦𝓮𝓫𝓼𝓲𝓽𝓮 𝓓𝓮𝓼𝓲𝓰𝓷𝓮𝓻:- 𝓚𝓪𝓻𝓪𝓷 𝓜𝓪𝓵𝓱𝓸𝓽𝓻𝓪
+            </div>
+        </header>
+
+        <main id="syllabusContent">
+            <!-- 1st Semester -->
+            <section id="semester-1" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">1<sup>ST</sup> SEMESTER</h3>
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th>Paper Code</th>
+                            <th>Paper Title</th>
+                            <th>Internal Marks</th>
+                            <th>External Marks</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BCA-101</td><td>Mathematical Foundation</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-102</td><td>Computer Fundamentals</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-103</td><td>Business Communication & Information System</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-104</td><td>C Programming</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-105</td><td>Lab on DOS & Windows</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-106</td><td>Lab on C</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td></td><td>TOTAL MARKS</td><td>120</td><td>480</td><td>600</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-101: Mathematical Foundation</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit-I: Differential Calculus:</strong> Successive Differetiation, Leibnitz Theorem, Expansion of function of one variable in Taylor's and Meclaurin's infinite series, Maxima and minima of functions of one variable, Partial Derivatives, Euler's theorem, change of variables, Total differentiation, Taylor's series in two variables, Maxima and Minima of two variables.</p>
+                <p><strong>Unit II: Integral Calculus:</strong> Definite integral and its application for area, length and volume, multiple integrals, change of order of integration</p>
+                <p><strong>Unit - III: Differential Equation:</strong> First degree and first order differential equation: Higher order differential equation with constant coefficients, Linear partial differential equation of first order P.D.E. of higher orders with constant coefficients.</p>
+                <p><strong>Unit - IV: Matrix Algebra:</strong> Elementary transformation, inverse of a matrix by row operation, rank, solution of a system of linear simultaneous equation by matrix method, Eigen values and Eigen Vectors, Cayley Hamilton theorem, Quadratic forms.</p>
+                <p>Note: Stress should be given on the development of ideas. Proofs of theorems and derivation of formulae are not required.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Engineering Mathematics, Dr. B.S. Grewal</li>
+                    <li>Matrix by A.R. Vashishtha</li>
+                    <li>Advanced Engg. Maths, by Chandrika Prasad</li>
+                    <li>Elements of Modern Algebra, J.N.Sharma, Krishna Prakashan, Meerut</li>
+                    <li>Topics in Algebra, I.N.Herstein, Vikas Publications.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-102: COMPUTER FUNDAMENTALS</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit - I: Introduction to Computers:</strong> Brief History of Development of Computers, Computer System Concepts & Characteristics, Capabilities and Limitations of Computers; Type of Computers- Analog, Digital, Hybrid, General, Special Purpose, Macro, Mini, Mainframe, Super; Generations of Computers, Type of PCs: Desktop, Laptop, Notebook, Palmtop, Workstations etc and their characteristics</p>
+                <p><strong>Unit-II: Computer organization and Working:-</strong> Basic Components of a Computer System: CPU, Memory-RAM, ROM, EPROM, PROM, and other types of Memory.</p>
+                <p><strong>Unit-III: Input Devices:</strong> Keyboard, Mouse etc.; Output Devices: Monitors: Characteristics and type of monitors, Printers: Daisy Wheel, Dot Matrix, Ink Jet, Laser, Line Printer. Plotter, Sound Card and Speakers, Projectors</p>
+                <p><strong>Storage Devices:</strong> Storage Fundamentals: - Primary versus Secondary Data Storage and retrieval method- Sequential, Direct, Index Sequential. Various storage Device:- Magnetic Tape, Magnetic Discs, Cartridge Tape, Hard Disk Drives, Optical Disks, CD, DVD, Zip Drive</p>
+                <p><strong>Unit - IV: Computer Software:</strong> Need, Types of software: System Software and application Software System Software: Operating System, Utility Program, Programming Languages, Assemblers, Compilers and Interpreters Operating System:- Functions type- Batch, Single, Multiprogramming, Multiprocessing, Programming Language: Machine Level, Assembly, High Level, 4GL, their merits and demerits, Application Software: Word processing, Spreadsheet, Presentation Graphics, Database Management Software, Characteristics, Usages and Examples and areas of Application of each of them.</p>
+                <p><strong>Unit- V: Algorithms, Flowcharts:</strong> Symbols, Rules for making Flowcharts, types of flowcharts, advantages and disadvantages; Pseudo Codes, Decision Tree, Decision Table, System Flowchart.</p>
+                <p><strong>Unit- VI: Programming Techniques-</strong> Top-Down, Bottom-Up, Modular, Structured- Features, Merits and demerits, Comparative Study. Programming Logic- Simple, Branching, Looping, Recursion. Introductory concepts of Computer Security and Virus</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>V. Rajaraman, Fundamentals of Computers, PHI.</li>
+                    <li>Introduction to Information Technology, ITL Education Solutions Ltd., Pearson</li>
+                    <li>Fundamentals of Information Technology- P.K. Sinha</li>
+                    <li>Computer Fundamentals- Reema Thareja, Oxford Press</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-103: BUSINESS COMMUNICATION & INFORMATION SYSTEM</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit-I:</strong> Meaning and Process of Communication, Barriers to communication, Verbal Communication and non-verbal communication. Business Communication and its importance in business organisation. Listening, Reading, Writing skills.</p>
+                <p><strong>Unit II:</strong> Principles of Letter Writing, Business Letters: Quotations, Orders, Tenders, Sales Letters, Complaints, Claim and Adjustment Letters, and Col Lect.ion Letters, Social Correspondence: Letters of congratulation, Invitations, Introduction, Recommendation, Condolence, Conveying Acceptance and regrets, etc., Summarisation, Punctuation. Meeting, Interview and Group Communication, Drafting of Notice, Agenda, and minutes of company meeting, Report writing and Proposal</p>
+                <p><strong>Unit III:</strong> Office procedure: Receipt and Dispatch of mail, Filing and Indexing Systems, Classification of mail. E-mail, On-line meeting, On-line interviews. Forms of Oral Communication - Group Discussion, Debate, Extempore, Presentation, Seminar and Conference</p>
+                <p><strong>Unit-IV:</strong> Data and information, Characteristics, sources and types of information. Importance of information for Managers, Value of Information, Information economics, Role of Computers.</p>
+                <p><strong>Unit - V:</strong> Concept, role and importance of Management Information System (MIS), Concept of system, characteristics and types of system, Information needs and management levels OAS, TPS, MIS,DSS. Role of OAS in organisations.</p>
+                <p><strong>Unit VI:</strong> MIS and Decision making concepts, Herbert-Simon model of Decision Making. Concept and philosophy of DSS, MIS Project Planning</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Essentials of Business Communication - Reddy, Apparnaiah, Rao</li>
+                    <li>Essentials of Business Communication - R. Pal and J.S.Korlahalli</li>
+                    <li>Business Communication - U.S.Rai and S.M.Rai</li>
+                    <li>Management Information & Control System, Dr. Sushila Madan, Taxmann Publ.</li>
+                    <li>Management Information System-Text and Cases, W.S.Jawadekar, McGraw Hill Publ.</li>
+                    <li>Management Information System, Dr Nirmalya Bagchi, Vikas Publ. 2010.</li>
+                    <li>Information System for Modern Management, R.G.Murdick, Joel E. Ross, & J.R.Clagget, PHI.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-104: C- Programming</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit - I:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1.1 Structures of 'C' Programming Language,</li>
+                    <li>1.2 Elements of C Programming</li>
+                    <li>1.3 Algorithms and flowcharts (Real Life Examples), Exercises</li>
+                    <li>2.1 C Tokens, Keywords, Identifiers, Variables, Constant</li>
+                    <li>2.2 Data Types</li>
+                    <li>2.3 Operators</li>
+                    <li>2.4 Types of operators</li>
+                </ul>
+                <p><strong>Unit - II:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>3.1 Decision Making: if, if-else, GOTO, Nesting, Switch Statements.</li>
+                    <li>3.2 Looping: for, Nesting of for-loop, While loop, do-while loop</li>
+                    <li>4.1 Array: One Dimensional</li>
+                    <li>4.2 Two Dimensional</li>
+                    <li>5.1 Concept of header files: Pre-processor directives: #include, #define</li>
+                </ul>
+                <p><strong>Unit - III:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>6.1 Functions: User Defined Functions</li>
+                    <li>6.2 Nesting, Recursion</li>
+                    <li>6.3 Function with Array</li>
+                    <li>6.4 Parameter Passing</li>
+                    <li>6.5 Call by value</li>
+                    <li>6.6 Call by reference</li>
+                </ul>
+                <p><strong>Unit - IV:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>7.1 String Handling: String Manipulation</li>
+                    <li>7.2 String Handling Functions.</li>
+                </ul>
+                <p><strong>Unit - V:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>8.1 Structure</li>
+                    <li>8.2 Structure Array</li>
+                    <li>9 Pointers: Pointer of Array, Structure Pointer</li>
+                </ul>
+                <p><strong>Unit - VI:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>10.1 File Handling</li>
+                    <li>10.2 Reading and Writing a File</li>
+                </ul>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Let us C - Yashwant Kanetkar.</li>
+                    <li>Programming in C- E. Balaguruswamy</li>
+                    <li>The C programming Language - Dennis Ritchie, Pearson</li>
+                    <li>Structured Programming approach using C - Furouzan & Ceilberg Thomson Learning publ.</li>
+                    <li>Pointers in C - Yashwant Kanetkar</li>
+                    <li>How to solve it by Computer - R. G. Dromy</li>
+                    <li>Introduction to algorithms - Cormen, Leiserson, Rivest, Stein</li>
+                    <li>Programming in C - R. Subburaj, Vikas Publishing House</li>
+                    <li>Computer Programming in C - V Rajaraman, PHI</li>
+                    <li>Programming in C using ANSI C - Ashok N. Kamthane, Pearson Education</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">ВСА-105: Lab on MS- Windows and DOS</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p>Features of MS Windows, Desktop, creation of folders and shortcuts, icons, features of Windows explorer, Internet Explorer, Windows Accessories (Paint, Notepad etc., Windows Media Player, Internet Browsers), control Panel, Taskbar.</p>
+                <p>Familiarisation with MS packages - Word, Excel, PowerPoint</p>
+                <p><strong>Disk Operating System (DOS)</strong></p>
+                <p><strong>DOS commands</strong></p>
+                <p><strong>Internal:</strong> DIR, MD, CD, RD, COPY, DEL, VOL, DATE, TIME, CLS, PATH, TYPE, PROMPT etc.</p>
+                <p><strong>External:</strong> CHKDSK, XCOPY, PRINT, DISKCOPY, DISKCOMP, DOSKEY, TREE, MOVE, LABEL, APPEND, FORMAT, SORT, FDISK, BACKUP, RESTORE, EDIT, MODE, ATTRIB, HELP, SYS etc. Executable vs. non-executable files in DOS.</p>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-106: Lab on C</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p><strong>Sample Exercise1: Basics</strong> Write programs to: print sample strings like "hello world", "Welcome to C Programming" with different formats using escape sequences, print different data types in 'C' and their ranges, initialize, assignment & printing variables of different data types.</p>
+                <p><strong>Exercise2: Operators</strong> i) Write a Program to demonstrate arithmetic operators. $(+,-,^{*},1,\%)$ ii) Demonstrate logical operators. (logical AND, logical OR) ii) read radius value from the keyboard and calculate the area of circle and print the result in both floating and exponential notation. iii) Calculate simple interest. iv) Convert temperature (Fahrenheit - Centigrade and vice-versa)</p>
+                <p><strong>Exercise3: Operators</strong> i) Write a Program to demonstrate relational operators. $(,<=,>=,==,!=)$ ii) Check equivalence of two numbers using conditional operator. lii) Demonstrate pre increment and post increment.(++a, a++ where a is a value to be initialized) iv) Demonstrate pre decrement and post decrement.(--a, a-- where a is a value to be initialized) v) Computing the volume of sphere, cone and cylinder assume that dimensions are integer's use type casting where ever necessary.</p>
+                <p><strong>Exercise4: Decision Statements</strong> i) Write a Program to read marks of a student in six subjects and print whether pass or fail (using if-else). ii) Calculate roots of quadratic equation (using if-else). iii) Calculate electricity bill. Read starting and ending meter reading. The charges are as follows. No. of Units Consumed Rate $in(Rs)$ 1-100 1.50 per unit 101-300 2.00 per unit for excess of 100 units 301-500 2.50 per unit for excess of 300 units 501-above 3.25 per unit for excess of 500 units</p>
+                <p><strong>Exercise 5: Switch operations</strong> i) Write a Program to perform arithmetic operations using switch case. ii) Display colors using switch case (VIBGYOR). iii) Display vowels and consonants using switch case. iv) Display names of days in a Week using switch case.</p>
+                <p><strong>Exercise 6: Basic Loop operations</strong> Do the Following Programs Using for, while, do-while loops. i) Write a program to calculate sum of individual digits of a given number. ii) Check whether given number is palindrome or not. lii) Print prime numbers in the given range. iv) Display multiplication tables from 1 to 10 except 3 and 5.</p>
+                <p><strong>Exercise 7: Advanced loops</strong> i) Write a program to print the Fibonacci series for given 'N' value. ii) Check whether a given number is a Fibonacci number or not. iii) Read 2 numbers x and n then compute the sum of the Geometric Progression. $1+x+x2+x3+-------+xn$ iv) Print the following formats. $1^{*}12^{**}123^{***}1234^{****}$</p>
+                <p><strong>Exercise 8: 1-D arrays</strong> i) Write a program to store 10 elements in the 1-D array and print sum of the array. ii) Print minimum and maximum elements in the 1-D array. iii) Count no. of positive numbers, negative numbers and zeros in the array. iv) Search the given element by using linear search. v) Sort the given elements using bubble sort technique.</p>
+                <p><strong>Exercise 9: 2-D arrays</strong> i) Perform matrix addition and matrix subtraction. ii) Perform matrix multiplication by checking the compatibility. iii) Print the transpose of a matrix.</p>
+                <p><strong>Exercise 10: Strings</strong> i) Write a program to perform various string manipulations using built-in functions. ii) Print the given strings in ascending order. iii) Verify the given string is palindrome or not (without built-in functions, with using built-in functions). Iv) Concatenate two strings using arrays.</p>
+                <p><strong>Exercise 11: Math Functions and $1/O$ Fucntions</strong> i) Write a program to read values from keyboard and find the values using abs(), sqrt(), floor(), ceil() and pow(). ii) Read and display a value using getch() and putch(). iii) Read and display a value using getchar(), putchar(), gets() and puts().</p>
+                <p><strong>Exercise 12: Functions</strong> i) Write a program to find sum of two numbers using functions. ii) Find product of two numbers using functions without arguments, without return type. iii) Find difference of two numbers using functions without arguments, with return type. iv) Find sum of two numbers using functions with arguments &without return type. v) Find product of two numbers using functions with arguments, with return type.</p>
+                <p><strong>Exercise 13: Functions and Recursion</strong> i) Write a program to swap two numbers using a) Call By Value B) Call By Reference. ii) Calculate factorial, gcd using recursion and non-recursion functions. iii) Perform arithmetic operations using pointer. iv) Matrix addition using pointers.</p>
+                <p><strong>Exercise 14: Structures</strong> i) Write a program to create structure for an account holder in a bank with following Fields: name, account number, address, balance and display the details of five account holders. ii) Find total marks of individual student and average marks for 10 students using structures. iii) Create structure called traveler and members of structure are train no, coach no, seat no, source, destination, gender, age, name and departure date. iv) Illustrate passing an entire structure to a function.</p>
+                <p><strong>Exercise 15: File operations using command line arguments</strong> i) Write a program which copies the contents of one file to another file using command line arguments. ii) Reverse the first n characters in a file use command line arguments. A Mini Project</p>
+            </section>
+
+            <!-- 2nd Semester -->
+            <section id="semester-2" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">2<sup>ND</sup> SEMESTER</h3>
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th>Paper Code</th>
+                            <th>Paper Title</th>
+                            <th>Internal Marks</th>
+                            <th>External Marks</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BCA-201</td><td>Discrete Mathematics</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-202</td><td>Computer Architecture</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-203</td><td>Data Structure through C</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-204</td><td>System Analysis and Design</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-205</td><td>Lab on MS-Office</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-206</td><td>Lab on Data Structure through C</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td></td><td>TOTAL MARKS</td><td>120</td><td>480</td><td>600</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-201: Discrete Mathematics</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit I: Set, Relation and Function:</strong> Notation, Inclusion and Equality of Sets, Power Set, Operations on set, Venn Diagram, Relation, Domain and range, Properties of binary relation in a set, relation matrix, digraph, Equivalence Relation, Partition and covering of a set. Definition and types of Functions, Composition of function, Inverse function. [22 Lect.]</p>
+                <p><strong>Unit II: Algebraic Structures:</strong> Definitions and illustrative examples of semi-groups, monoids, Groups, Subgroups, Ring.</p>
+                <p><strong>Unit - III: POSET and Lattice-</strong> Partial Ordering, partially ordered set, chain, Maximal, Minimal, Lub and Glb, Hasse Diagram</p>
+                <p><strong>Unit IV: Lattice:</strong> Definition of lattice and its properties, Sublattice, distributive and complemented lattice [14 Lect.]</p>
+                <p><strong>Unit V: Graph Theory:</strong> Definition of graph and types, Directed and undirected graph, path, walk and circuit, Regular graph, Tree.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Discrete Mathematics, S.K.Sarkar, S. Chand & Co.</li>
+                    <li>Elements of Combinatorial Math - C.L.Liu</li>
+                    <li>Discrete Mathematics, J.K.Sharma, Trinity Publ.</li>
+                    <li>Discrete Mathematics - Tremble</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA - 202: Computer Architecture</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit-I:</strong> Data representation, Data Types and Number Systems, Binary Number System, Octal & Hexa-Decimal Number System, Fixed Point Representation, 1's & 2's Complement, Binary Fixed - Point Representation, Arithmetic Operation on Binary Numbers, Overflow & Underflow</p>
+                <p><strong>Unit-II:</strong> Boolean algebra and digital logic circuits -Logic Gates, AND, OR, NOT Gates and their Truth Tables, NOR, NAND & XOR Gates, Boolean Algebra, Basic Definition and Properties, Basic Boolean Law's, Demorgan's Theorem</p>
+                <p><strong>Unit-III:</strong> Sequential logic- Flip-Flops - RS, D, J K & T Flip-Flop, Registers, Counters and the memory unit, Shift registers, Ripple counters and Synchronous counters, Timings sequence digital logic families</p>
+                <p><strong>Unit-IV:</strong> Input-output organizations- $1/O$ Interface, Properties of simple $1/O$ Devices and their controller, Isolated Vs Memory-mapped $1/O$, Modes of data transfer, Synchronous & Asynchronous data transfer</p>
+                <p><strong>Unit-V:</strong> Memory organization - Auxiliary Memory, Magnetic Drum, Disk & Tape, Semi-conductor memories, memory, Hierarchy, Associative memory, Virtual memory, Address space & memory space, Cache memory, Hit ratio, Writing into cache.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Computer System Architecture - Morris Mano, PHI Publications.</li>
+                    <li>Modern Digital Electronics - R. P. Jain, TMH.</li>
+                    <li>Computer Fundamentals - V. Rajaraman, PHI.</li>
+                    <li>Digital Logic and Computer Design - Morris Mano, PHI Publications</li>
+                    <li>Computer Architecture and Organisation, John P. Hayes, McGraw Hill Publ.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-203: Data Structure through C</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit I: Introduction:</strong> Array, Function, Pointer and Structure.</p>
+                <p><strong>Unit - II: Recursion:</strong> Recursion vs Looping, Recursive Functions.</p>
+                <p><strong>Unit - III: Sorting & Searching:</strong> Sorting: Selection, Bubble, Insertion, Heap and Quick sorting. Searching: Linear and Binary searching.</p>
+                <p><strong>Unit - IV: Linked List:</strong> Self referential structure, Dynamic memory allocation. Single Linked List: Addition, Deletion, Insertion, Searching of nodes. Double Linked List: Addition, Deletion, Insertion, Searching of nodes. Circular Linked List: Addition, Deletion, Insertion, Searching of nodes.</p>
+                <p><strong>Unit - V: Stack & Queue:</strong> Stack: Implementation using array and linked list. Push and Pop operations. Queue: Implementation using array and linked list. Add and Delete operations.</p>
+                <p><strong>Unit - VI: Trees & Graph:</strong> Trees: Binary Trees, Binary Tree Representations, Binary Search Tree Prefix, Infix and Postfix traversal of tree. Graph: Concept and representation using matrix.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>R.S.Salaria, Data Structures & Algorithms using C, Khanna Publishing</li>
+                    <li>S.K. Srivastava, Depth in Data Structure through C- BPB Publication-</li>
+                    <li>Seymour Lipschultz, "Data Structures with $C^{\prime\prime}$, Schaum's outLines, Tata McGraw-Hill.</li>
+                    <li>Mark Allen Weiss, "Data Structures and Algorithm Analysis in $C^{n}$, Pearson Education.</li>
+                    <li>Robert Kruse, C.L.Tondo, Bruce Leung, Shashi Mogalla, “Data Structures and Program Design using C”, Pearson Education.</li>
+                    <li>Forouzan, “A Structured Programming Approach using C”, Cengage Learning India.</li>
+                    <li>A Practical Approach to Data Structures and Algorithms – Sanjay Pahuja, New Age Publ.</li>
+                    <li>Data Structure using C, Rohit Khurana, Vikas Publication</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 204: SYSTEM ANALYSIS & DESIGN</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I:</strong> Importance of System Analysis and Design, Concept of System, characteristics and types of system, System Development Life Cycle - waterfall model. Prototype development strategy, Software Crisis, Audit Trail, Role and Attributes of System Analyst.</p>
+                <p><strong>Unit – II:</strong> Sources of Project request, Project Selection, Preliminary Investigation, Feasibility Study, types of feasibility study, Cost and benefit analysis. Systems Analysis, Requirements determination, Structured Analysis, System Requirements Specification (SRS), Analysis Tools, Data Dictionary, HIPO, Decision Tree, Decision Table, Warnier-Orr Diagram, ERD, Data Flow Design (DFD).</p>
+                <p><strong>Unit – III:</strong> System Design, Design process, constraints, Input and control Design, Validation checks, concept and types of Form, Form Design, Output Design, File Design: Types of File Master File, Transaction File, Table / Reference File, Report File.</p>
+                <p><strong>Unit – IV:</strong> Software Quality and Testing: Quality concept, Testing and Testing objectives, Black Box and White Box testing, Unit testing, integration testing, system testing</p>
+                <p><strong>Unit – V:</strong> Hardware and Software Acquisition and selection criteria, system conversion and conversion plan, Site preparation, training, Maintenance and types of maintenance.</p>
+                <p><strong>Unit – VI:</strong> Management Information System: Definition, objectives and role in organisation and for managers. Information system at different levels of organisation/management – OAS,TPS,MIS,DSS. Components of MIS, Failure and success of MIS.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>“Analysis & Design of Information System”, James A. Senn, McGraw Hill Publ. Delhi</li>
+                    <li>“System Analysis & Design”, E.J.Awad, Galgotia Publ., N. Delhi</li>
+                    <li>“System Analysis & Design”, V. Rajaraman, PHI Publ.</li>
+                    <li>“Management Information & Control System”, Dr. Sushila Madan, Taxmann Publ.</li>
+                    <li>“Information System for Modern Management”, R.G.Murdick, Joel E. Ross, & J.R.Clagget, PHI</li>
+                    <li>“System Analysis & Design”, D. Richard, Irwin Inc., 1979.</li>
+                    <li>“Introduction to System Analysis & Design”, B.S.Lee, Vols. Manchester, U.K.</li>
+                    <li>“Management Information Systems- Managing the Digital Firm”, Kenneth C. Laudon & Jane P. Laudon, Pearson, 15 Ed., 2018.</li>
+                    <li>“Systems Analysis and Design Methods”, Jeffery L. Whitten, Lonnie D. Bentley, Kevin C. Dittman, TMH</li>
+                    <li>Modern Systems Analysis and Design,Jeffrey A. Hoffer,Joey F. George,and Valacich, Pearson</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA-205 Lab on MS-Office</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p><strong>Microsoft Word:</strong> Introducing Word, Entering and Editing Text, Formatting Text, Formatting Pages, Creating Tables; Special Word Techniques, Word and the Web.</p>
+                <p><strong>Microsoft Excel:</strong> Introducing Excel, Entering Data and Formulas, Structuring the Sheet, Formatting the Sheet, Using Excel Charts, Excel Database Techniques, Special Excel Techniques, Excel.</p>
+                <p><strong>Microsoft PowerPoint:</strong> Introducing PowerPoint, Building a Presentation, Outlining the Presentation, Creating Text Slides, Creating Chart Slides, Formatting Charts, Creating Org Chart and Tables, Customizing a Presentation, Drawing on Slides, Creating Slide Shows, Animation effects.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>SteveSagman, Microsoft Office XP for Windows, Pearson Education.</li>
+                    <li>IT Tools and Applications- S.K. Jain, BPB Publications</li>
+                    <li>A First Course In Computer Based On Windows XP And Office XP, Sanjay Saxena. Vikash Publ.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA 206: Lab on Data Structure through C:</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p>Programs in C related to following topics:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>i) array - one and two dimensions.</li>
+                    <li>ii) function - passing variable and array to a function.</li>
+                    <li>iii) pointer and function - call by address/reference.</li>
+                    <li>iv) structure such as structure to represent a date, point, time etc.</li>
+                    <li>v) Recursive functions.</li>
+                </ul>
+                <p>selection sorting, bubble sorting, insertion sorting, heap sorting, and quick sorting of elements of an array.</p>
+                <p>menu based operations on single linked list, menu based operations on double linked list, menu based operations on circular linked list.</p>
+                <p>stack and its operations, queue and its operations.</p>
+                <p>insertion of node in binary search tree.</p>
+                <p>traversal of binary search tree nodes in prefix, infix and postfix order.</p>
+                <p>A Mini Project</p>
+            </section>
+
+            <!-- 3rd Semester -->
+            <section id="semester-3" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">3<sup>RD</sup> SEMESTER</h3>
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th>Paper Code</th>
+                            <th>Paper Title</th>
+                            <th>Internal Marks</th>
+                            <th>External Marks</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BCA-301</td><td>Fundamentals of Management & Business Accounting</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-302</td><td>Database Management System</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-303</td><td>Object Oriented Programming using C++</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-304</td><td>Numerical Methodology</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-305</td><td>Lab on DBMS (SQL/MS-ACCESS)</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-306</td><td>Lab on C++</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td></td><td>TOTAL MARKS</td><td>120</td><td>480</td><td>600</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 301: Fundamentals of Management & Business Accounting</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Concept:</strong> Nature, Functions of Managers, Management: Arts Vs Science, Evolution of Management Thoughts, Functions of Management.</p>
+                <p><strong>Unit II:-</strong> Types of Control, Steps involved in Control Process, Meaning and importance of the study of Organisational Behaviour. Improving inter-personal effectiveness, inter-personal communication [6 Lect.]</p>
+                <p><strong>Unit – III:</strong> Introduction of Accounting- Basics of Accounting- Meaning of Accounting and Accounting Cycle, Users of Accounting Information and Their Needs, Objectives, Types of Accounting Information, Advantages, Limitations, and Branches of Accounting, Basic Accounting Terminology,</p>
+                <p><strong>Unit-IV:</strong> Double Entry System of Book Keeping, Accounting and Economic Concept of Income, Computation of Accounting Income and economic Income.</p>
+                <p><strong>Unit – V:</strong> Journalising, Posting and Balancing. Financial Statements- Meaning, Usefulness, Elements of Financial Statements, Manufacturing Accounting, Trading Account, Profit & Loss Account, Balance Sheet (Position Statement), Distinction Between Manufacturing Account and Trading Account, Trial Balance.</p>
+                <p><strong>Unit-VI:-</strong> Use of Computers in Accounting – Meaning, Capability and Role of Computers in Accounting, Computer Terms</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Principles and Practices of Management by L.M.Prasad</li>
+                    <li>Essentials of Management by Harold Koontz & Oddonell</li>
+                    <li>Organisation and Management by R.D.Agrawal</li>
+                    <li>Organisation Behaviour by Fred Luthens</li>
+                    <li>Management of Organisation Behaviour – Harshey & Blanchard</li>
+                    <li>Financial Accounting, P.C.Tulasyan, 24 Ed. Pearson</li>
+                    <li>Modern Accountancy – A. Mukherjee & M. Hanif</li>
+                    <li>Advance Accountancy – J.R.Batliboi.</li>
+                    <li>Comprehensive Accountancy – S.A.Siddiqui, Laxmi Publ.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 302: DATABASE MANAGEMENT SYSTEM</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit - I Introduction:</strong> Database and Database Users, Characteristics of the Database Approach. Structure, Function and Components of DBMS, Different people behind DBMS, Advantages of using DBMS. Database System Concepts and architecture: Data Models, Schemas, and Instances. DBMS 3-Level ANSI/SPARC Architecture and Data Independence. Types of DBMS.</p>
+                <p><strong>Unit - II Data Models:</strong> Entity-Relationship Model: Entity types, Entity sets, attributes, and Keys, ER Model Concepts, Notation for ER Diagrams, Reducing E-R Diagrams to tables. Abstraction Generalisation, Specialisation, and Aggregation. Cardinality and Modality. Exercises.</p>
+                <p><strong>Unit – III: Relational Data Model:</strong> Structure and properties of relational model, Relation, Attribute, Tuple, Keys: Super, Primary, Candidate, Alternate, and Foreign keys. Relational Algebra: Union, Intersection, Difference, Cartesian Product, Division, Join. Introduction to Network and Hierarchical Data models.</p>
+                <p><strong>Unit - IV Functional Dependencies and Normalization for Relational Database:</strong> Functional Dependencies and its types, Axioms for FDs, Decomposition Rules, Different Normal Forms: 1NF, 2NF, 3NF, BCNF, Multi-valued dependencies – 4NF and 5NF, DKNF.</p>
+                <p><strong>Unit – V Relational Database Language:</strong> Data definition in SQL, DDL Commands, DML Commands, Queries in SQL- Simple Queries, Nested Queries, Aggregate Functions, Insert, Delete and Update, Views in SQL, Specifying General Constraints as Assertions, specifying indexes.</p>
+                <p><strong>Unit–VI: Transaction Processing Concepts:</strong> Introduction, Transaction and System Concepts, Desirable (ACID) properties of transaction, Recovery Techniques: Log-based, Check-points and Shadow paging, Serializability of schedules, Problems with concurrency, Concurrency Control, Locking Techniques, Lock types, Granularity of Locking, Concurrency Control based on time stamp ordering.</p>
+                <p><strong>Text book:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Remez Elmaseri and Shamkant B. Navathe, “Fundamentals of Database Systems”, 5th Ed., Pearson Education, 2007.</li>
+                    <li>Shio Kumar Singh, “Database Systems-Concepts, Designs and Application”, 2011. Pearson.</li>
+                    <li>A. Silberschatz, Henry. F. Korth, S. Sudarshan, “Database System Concepts” 6th Ed, McGraw Hill, 2012.</li>
+                    <li>Bipin C. Desai, “An Introduction to database systems”, Galgotia Publications</li>
+                    <li>C.J.Date, A. Kannan, S. Swamynathan, “Introduction to database systems”, Pearson, 2013.</li>
+                    <li>Alexis Leon & Mathews Leon, “Database Management Systems”, Vikas Publ.</li>
+                    <li>Atul Kahate, “Introduction to Database Management Systems”, Pearson Education.</li>
+                    <li>Prateek Bhatia, Gurvinder Singh, “Simplified Approach to DDBMS”, Kalyani Publ.</li>
+                    <li>Rini Chakrabarti, s. Dasgupta, S. K. Shinde, “Advanced Database Management Systems”, Dremtech Press, 2014.</li>
+                    <li>Arun K Majumdar, Primoty Bhattacharya, “Database Management Systems”, McGraw Hill</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 303: Object Oriented Programming using C++</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit - I:</strong> Object oriented programming concepts Why do we need object oriented. C++ Programming basics: Output using cout. Directives. Input with cin. Type bool, The setw manipulator, Type conversions.</p>
+                <p><strong>Unit - II: Functions:</strong> Returning values from functions, Reference arguments, Overloaded function, Inline function, friend function, Static function, Default arguments, Returning by reference.</p>
+                <p><strong>Unit - III: Object and Classes:</strong> Making sense of core object concepts (Encapsulation, Abstraction, Polymorphism, Classes, Messages Association, Interfaces) Implementation of class in C++, C++ Objects as physical object, C++ object as data types, constructor, Object as function arguments, The default copy constructor, returning object from function, Structures and classes, Classes objects and memory static class data, Const and classes.</p>
+                <p><strong>Unit - IV:</strong> Arrays and string arrays fundamentals, Arrays as class Member Data: Arrays of object, string, The standard C++ String class, Operator overloading: Overloading unary operations, Overloading binary operators, data conversion, pitfalls of operators overloading and conversion keywords. Explicit and Mutable.</p>
+                <p><strong>Unit - V: Inheritance:</strong> Concept of inheritance, Derived class and based class, Derived class constructors member function, inheritance in the English distance class, class hierarchies, inheritance and graphics shapes, public and private inheritance, aggregation: Classes within classes, inheritance and program development, Virtual Function: Virtual Function</p>
+                <p><strong>Unit - VI: Pointer:</strong> Addresses and pointers. The address of operator and pointer and arrays. Pointer and Faction pointer and C-types string. Memory management: New and Delete, pointers to objects, debugging pointers. Assignment and copy initialization, this pointer, dynamic type information. Streams and Files: Streams classes, Stream Errors, Disk File I/O with streams, file pointers, error handling in file I/O with member function, overloading the extraction and insertion operators, memory as a stream object, command line arguments and printer output. Templates and Exceptions: Function templates, Class templates Exceptions</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Programming in C++, Robert Laffore, TMH</li>
+                    <li>Programming in C++, Ashok M. Kamthane, Pearson</li>
+                    <li>Object Oriented Programming with C++, E. Balaguruswamy, TMH</li>
+                    <li>C++ Programming, Maria Litvin & Gary Litvin, Vikas Publ.</li>
+                    <li>Programming with C++, D. Ravichandran, TMH</li>
+                    <li>Object Oriented Programming with C++, Rohit Khurana, ITESL, Vikas Publ.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 304: Numerical Methodology</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I:</strong> Solution of a nonlinear algebraic ad transcendental equations:Bisection method, False position, Newton Raphson method, Iterative Method, Lin Bairstow’s method.</p>
+                <p><strong>Unit–II:</strong> Solution of Simultaneous linear equation: Gauss elimination, Gauss Jordan, LU decomposition, Crout’s method, Jacobi, Gauss Seidel, Relaxation method, Inverse of a matrix using iterative method.</p>
+                <p><strong>Unit – III:</strong> Finite differences: Introduction and different types of operators and relation between them. Factorial notation and Polynomial in factorial notation.</p>
+                <p><strong>Unit – IV: Interpolation:</strong> Introduction Newton forward and backward interpolation ,Newton Divided differences, Lagrange’s Interpolation, Central difference interpolation formula, Gauss forward and backward interpolation formula. Numerical differentiation.</p>
+                <p><strong>Unit – V: Numerical Integration:</strong> Trapezoidal and Simpson’s rules, weddle’s rule and their order of error.</p>
+                <p><strong>Unit – VI:</strong> Solution of ordinary differential equation:Euler’s method, Euler’s modified method, Runga Kutta method, Taylor’s Series method, Picard’s method, Adams-Bashforth method..</p>
+                <p>Note: Students may use scientific calculator for numerical calculations of various functions (Log, Exponential, Trigonometrical, etc.)</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Jain, M.K.: Numerical method for scientific and Engg. Computations – Wiley Eastern, N.D.</li>
+                    <li>Sastry, S.S.: Introduction to Numerical Analysis – PHI</li>
+                    <li>V. Rajaraman: Computer Oriented Numerical Methods – PHI</li>
+                    <li>Gonte de Boore – Elementary Numerical Analysis, Tata McGraw Hill</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 305: LAB ON DBMS (MS-ACCESS/SQL)</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p><strong>SQL Commands:</strong> DDL: CREATE, ALTER, DROP, INDEX DML: insert, delete, update, and commands related to queries on tables – simple and nested queries- Basic data retrieval; condition specification; order by; Uses of logical operators – and, or, not; Range searching; Pattern matching; arithmetic and aggregate functions; Joining multiple tables – (Equi joins); set manipulations – Any, All, In, Exists, Union, Intersect, Minus, grouping command. Creating views. DCL: GRANT and REVOKE TCL: COMMIT, ROLLBACK and SAVEPOINT</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>SQL & PL/SQL For Oracle 11g Black Book, Dr. P.S.Deshpande, Dreamtech Press</li>
+                    <li>Commercial Application Development using Oracle Developer 2000, Ivan Bayross, BPB Publ.</li>
+                    <li>SQL, PL/SQL The Programming Language Of Oracle, Ivan Bayross, BPB Publ.</li>
+                    <li>Learning Oracle SQL and PL/SQL- A Simplified Approach, Rajeeb C. Chatterjee,PHI</li>
+                    <li>Oracle - The Complete Reference, Oracle Press, TMH Edition.</li>
+                    <li>SQL- A Complete Reference, Alexis Leon & Mathews Leon, TMH</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 306: Lab on C++</h4>
+                <p><strong>Total Lectures = 60</strong></p>
+                <p>Program in C++ related to following topics: Input/ Output using cin/ cout. Decision making using if else, switch case, conditional operator Looping using while, do while and for. Array - single and multi dimension. Function - simple, recursive, call by value and reference, overloading, default argument value. Class - Constructor, Member Functions. Operator overloading. Friend function. Inheritance - Single, Multilevel, Multiple. Virtual Function. Stream handling.</p>
+                <p><strong>1. Simple C++ Programs to Implement Various Control Structures.</strong></p>
+                <p><strong>Ex 1A: if .. else statement</strong> An electricity board charges the following rates to domestic users ti discourage large consumption of energy: FOR the first 100 units - 50P per unit, For next 200 units - 80P per unit Beyond 300 units - 90P per unit. All users are charged a minimum of Rs.50.00. if the total amount is more than Rs.300.00 then an additional surcharge of 15% is added.Write a C++ program to read the names of users and number of units consumed and print out the charges with names</p>
+                <p><strong>Ex 1B: switch.. case statements and do .. while loop</strong> An election is contested by five candidates. The candidates are numbered 1 to 5 and a voting is done by marking the candidate number in a ballot paper. Write a C++ program to read the ballot and count the votes cast for each candidate using an array variable count. In case, a number read is outside the range 1 to 5 the ballot should be considered as a ‘spoilt ballot’, and the program should also count the number of spoilt ballots</p>
+                <p><strong>Ex 1C: for loop -</strong> Write a C++ program to print the different Pyramid structures</p>
+                <p><strong>Ex 1D: while loop</strong> Write a C++ program to print the Fibonacci series 0 1 1 2 3 5 8 13 …. By getting number of number to be displayed is given as input Eg. 5 is input value means it should print first 5 numbers 0 1 1 2 3:</p>
+                <p><strong>2. Programs to Understand Structure & Unions.</strong></p>
+                <p><strong>Ex 2A: Structure</strong> Create a Structure called employee with the following details as variables within it. 1. Name of the employee, 2. Age, 3. Designation, 4. Salary Write a C++ program to create array of objects for the structure to access these and print the name, age, designation and salary</p>
+                <p><strong>Ex2B: Union</strong> Create a Union called student with the following details as variables within it. 1. Name of the student, 2. Age, 3. Year of study, 4. Semester, 5. 5 different subject marks in array. Write a C++ program to create object for the union to access these and print the Name, age, year, semester and grade according to their percentage of marks scored. 90 % and above – S grade, 80% to 89% -- A grade, 70% to 79% -- B grade, 50% to 69% -- C grade 50% to 59% -- D grade, <50% -- F grade</p>
+                <p><strong>3. Programs to Understand Pointer Arithmetic.</strong></p>
+                <p><strong>Ex 3:</strong> Write a C++ program to find the number of vowels present in the given character array using pointer arithmetic.</p>
+                <p><strong>Ex 4A:</strong> Write a C++ program to print the given number in reverse order. Use functions with return type and without return type for reversing the number. Ex: given number is 2345 , output should be 5432</p>
+                <p><strong>Ex 4B:</strong> Write a C++ program to find the sum of factorial of a given number using recursive function</p>
+                <p><strong>Ex 5:</strong> Write a C++ program to perform different arithmetic operation such as addition, subtraction, division,modulus and multiplication using inline function</p>
+                <p><strong>6. Programs to Understand Different Function Call Mechanism.</strong> a. Call by reference and Call by value</p>
+                <p><strong>Ex 6:</strong> Write a C++ program to swap two number by both call by value and call by reference mechanism, using two functions swap_value() and swap_reference respectively , by getting the choice from the user and executing the user’s choice by switch-case.</p>
+                <p><strong>7. Programs to Understand Storage Specifiers.</strong></p>
+                <p><strong>Ex 7:</strong> Write a C++ program to demonstrate the static and non static variable usage defining them within a function.</p>
+                <p><strong>8. Constructors & Destructors.</strong></p>
+                <p><strong>Ex 8:</strong> Create a class for counting the number of objects created and destroyed within various block using constructor and destructors.</p>
+                <p><strong>9. Use of “this” Pointer Using class</strong></p>
+                <p><strong>Ex 9:</strong> Write a C++ program to create three objects for a class named pntr_obj with data members such as roll_no & name . Create a member function set_data() for setting the data values and print()member function to print which object has invoked it using ‘this’ pointer.</p>
+                <p><strong>10. Programs to Implement Inheritance and Function Overriding.</strong></p>
+                <p><strong>Ex 10A:</strong> Write a C++ program with different class related through multiple inheritance and demonstrate the use of different access specifiers by means of member variables and member functions.</p>
+                <p><strong>Ex 10B:</strong> Write a C++ program to explain virtual function (polymorphism) by creating a base class c_polygon which has virtual function area(). Two classes c_rectangle and c_traingle derived from c_polygon and they have area() to calculate and return the area of rectangle and triangle respectively.</p>
+                <p><strong>11. Programs to Overload Unary & Binary Operators as Member Function & Non Member Function.</strong></p>
+                <p><strong>Ex 11 A:</strong> Write a C++ program to count the number of persons inside a bank, by increasing count whenever a person enters a bank, using an increment(++) operator overloading function, and decrease the count whenever a person leaves the bank using a decrement(--) operator overloading function inside a class</p>
+                <p><strong>Ex 11 B:</strong> Write a C++ program to create two objects of a class called company and add their data members using an operator overloaded function for ‘+’ operator and ‘-‘operator</p>
+                <p><strong>12. Programs to Understand Friend Function & Friend Class.</strong> a. Friendfunction b. Friendclass</p>
+                <p><strong>Ex 12 B:</strong> Write a program to accept the student detail such as name and 3 different marks by get_data() method and display the name and average of marks using display() method. Define a friend class for calculating the average of marks using the method marrk_avg().</p>
+                <p><strong>13. Programs on Class Templates</strong></p>
+                <p>A Mini Project</p>
+            </section>
+
+            <!-- 4th Semester -->
+            <section id="semester-4" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">4<sup>TH</sup> SEMESTER</h3>
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th>Paper Code</th>
+                            <th>Paper Title</th>
+                            <th>Internal Marks</th>
+                            <th>External Marks</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BCA-401</td><td>Java Programming</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-402</td><td>Computer Graphics & Multimedia</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-403</td><td>Operating System & Linux</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-404</td><td>Software Engineering Principles</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-405</td><td>Lab on Java Programming</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-406</td><td>Lab on Computer Graphics & Linux</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td></td><td>TOTAL MARKS</td><td>120</td><td>480</td><td>600</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 401: Java Programming</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Overview of Java Language</strong> C++ Vs JAVA, JAVA and internet and WWW, JAVA support systems, JAVA environment. JAVA program structure, tokens, statements, JAVA virtual machine, constants & variable, data types, declaration of variable, symbolic constants, type casting. Operators: Arithmetic, relational, logical assignments, increment and decrement, Conditional bitwise, special, expressions & its evaluation Decision Making and Branching If statement, if…else statement, Nesting of if...else statements, else…if ladder, switch, ? operators, loops while, do, for, jumps in loop, labelled loops.</p>
+                <p><strong>Unit – II: Classes, Objects and Methods</strong> Defining a class, adding variables and methods, creating objects, accessing data members, constructors, methods overloading, static members, nesting of methods. Inheritance: Extending a class, overriding methods, final variables and methods, final classes, finalizer methods, abstract methods and classes, visibility control.</p>
+                <p><strong>Unit – III: Arrays, String and Vectors</strong> Arrays: One dimensional & two dimensional, Strings, vectors, wrapper classes, defining interfaces, extending interfaces, implementing interfaces, accessing interfaces, variables, system packages, using system packages, naming conventions, creating packages, accessing a package, using package, adding a class to a package, hiding classes.</p>
+                <p><strong>Unit - IV: Multithreaded programming</strong> Creating threads, extending the threads class, stopping and blocking a thread, life cycle of a thread, using thread methods, thread exceptions, thread priority, synchronization, implementing the runnable interface.</p>
+                <p><strong>Unit – V: Applet Programming</strong> Local and remote applets, applets Vs applications, writing applets, applets life cycle, creating and executable applet, designing a web page, applet tag adding applet to HTML file, running the applet, passing parameters to applets, aligning the display, DTML tags & applets, getting input from the user. JDBC- ODBC (Java Database Connectivity)</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Core Java, Nageshwar Rao, Dreamtech Press</li>
+                    <li>Core Java For Beginners, Rashmi Kanta Das, Vikash Publishing House</li>
+                    <li>Java - The Complete Reference, Herbert Schildt, TMH</li>
+                    <li>Programming With Java: A Primer, Balagurasamy, TMH</li>
+                    <li>Java – One Step Ahead, Anita Seth & B.L.Juneja, Oxford University Press.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 402: Computer Graphics and Multimedia</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit- I:</strong> 1.1 Introduction, Computer Graphics System, Interactive Graphics. 1.2 Passive Graphics, Application of Computer Graphics.</p>
+                <p><strong>Unit -II:</strong> 2.1 Introduction, Display Devices, Cathode Ray Tube. 2.2 Bit-Mapped Graphics, Graphics Attributes, Refresh Cathode Ray Tubes. 2.3 Random Scan Displays, Raster-Scan Displays , Color CRT Monitors. 2.4 Direct-View Storage Tubes (DVST), Plasma Panel Displays, Thin Film Electroluminescent displays. 2.5 Light Emitting Diode (LED), Liquid Crystal Displays (LCDs), Hard Copy Output Devices.</p>
+                <p><strong>Unit- III:</strong> 3.1 Introduction, Scan Conversion, Digital Differential Analyzer. 3.2 Bresenham's Algorithm, Integer Bresenham's Algorithm. 3.3 General Bresenham's Algorithm, Circle Generation Algorithms, Bresenham's circle generation algorithm, Midpoint Circle Algorithm. 3.4 Ellipse Generation algorithms, Midpoint Ellipse Algorithm, Arc Generation algorithms, Fill Algorithms.</p>
+                <p><strong>Unit – IV:</strong> 4.1 Fundamentals of Antialiasing, Dithering,2-D Graphics Transformations, Geometric and Coordinate Transformations. 4.2 Transformation Composition, 2-D View and Clipping, Exterior and Interior Clipping, Viewport Transformation, Polygon Clipping , Text Clipping.</p>
+                <p><strong>Unit-V:</strong> 5.1 Introduction,3-D Graphics Transformations. 5.2 Coordinate Transformations,3-D Projections, Perspective Projection on a Plane with C(0,0,0), Perspective Projection on a Plane with C(a,b,c),Parallel Projections, 3-D Viewing and Clipping, Hidden Lines and Surfaces Scan line Entries (a) (b) (c) (d). 5.3 Importance of Wireframe Models, Demerits of Wireframe Models, Representing a Polygonal Net Model, Bezier Curves and Surfaces, B-Splines.</p>
+                <p><strong>Unit- VI:</strong> 6.1 Introduction 6.2 Multimedia Hardware 6.3 Multimedia Software Tools 6.4 Application Areas for Multimedia 6.5 Multimedia Components Hypermedia, Multimedia Technology</p>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 403: Operating System & Linux</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Overview:</strong> Objectives and Functions, Evolution, Achievement.</p>
+                <p><strong>Unit – II: Process Management:</strong> Process, State, Description, Control.</p>
+                <p><strong>Unit – III: Process Synchronization:</strong> Mutual Exclusion, Semaphores, Monitors, Message Passing, Readers/Writers Problem.</p>
+                <p><strong>Unit – IV: Deadlock:</strong> Deadlock Avoidance & Detection, Dining Philosophers Problem.</p>
+                <p><strong>Unit – V: Memory Management:</strong> Requirements, Partitioning, Paging Segmentation.</p>
+                <p><strong>Unit – VI: Scheduling:</strong> Uniprocessor Scheduling Algorithms, Multiprocessor Scheduling, Real-Time Scheduling.</p>
+                <p><strong>Unit – VII: File Management:</strong> File Organization, Directories, Sharing, Record Blocking, Secondary Storage Management.</p>
+                <p><strong>Unit – VIII: LINUX & SHELL PROGRAMMING</strong> Linux: File/Folder Structure, User Management, Process Management, Commonly used commands. Shell Programming: Defining variable, Expression, if else fi, case esac, while, until, for loop.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Abraham Silberschatz and Peter Baer Galvin, “Operating System Concepts”, Pearson Education.</li>
+                    <li>H.M.Deitel, “Operating Systems”, Pearson Learning Solutions.</li>
+                    <li>William Stallings, “Operating Systems”, Pearson Education.</li>
+                    <li>Sumitabha Das, "Unix Concepts and Applications", TMH.</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 404: SOFTWARE ENGINEERING PRINCIPLES</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit-I:</strong> Introduction to Software Engineering, its emergence; Software characteristics, classification of software; software engineering principles, phases in software engineering. Software Process, Capability Maturity Model, Process Models: Waterfall, Prototype, Rapid Application Development (RAD), Incremental, Spiral, Component-based Assembly Model, V-Model.</p>
+                <p><strong>Unit –II: Systems Analysis:</strong> Requirements and Specification: Analysis Model, The Requirement Engineering Process, The Software requirement document, Functional & Non functional requirements, Fact Finding Techniques – Meeting (FAST), Interview, Direct Inspection, Documents, Questionnaire, System Requirements Specification (SRS), Data Flow Diagram (DFD), ERD, Cardinality and Modality.</p>
+                <p><strong>Unit – III: System Design:</strong> Design Process, Good Design, Design Principles, Design constraints, Design Quality, System Structuring control models, Modular decomposition, Coupling and Cohesion, Domain Specific architecture, User interface Design. Object Oriented & function oriented design: Objects, object Classes and inheritance, Object identification.</p>
+                <p><strong>Unit – IV: Software Coding:</strong> Coding guidelines, code document, structured programming, code inspection. Metrics – Definition, objectives and types of metrics, Size-oriented (LOC-based) and Function – oriented (FP-based) metrics. Reliability and Software Quality: concepts, Factors of good quality software, McCall’s Quality Factors, Software Quality Assurance (SQA), FTR, Inspection and Walkthroughs.</p>
+                <p><strong>Unit – V: Software Testing:</strong> Testing basics, Guidelines of testing, characteristics of software test, Test Plan and Test case, software testing strategies, Levels of software testing: Unit testing, integration testing, system testing, acceptance testing. Testing techniques: White box, Black box and Gray box testing. Basis path testing, Flow graph notation, cyclomatic complexity, Equivalence Partitioning, verification & Validation (V & V), Debugging.</p>
+                <p><strong>Unit – VI:</strong> Maintenance and its types. Overview of Computer aided software engineering (CASE)</p>
+                <p><strong>Text Book:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Software Engineering: Principles and Practices, Rohit Khorana, Vikas Publ., 2010</li>
+                    <li>Software Engineering: Principles and Practices, W.S. Jawadekar, TMH</li>
+                    <li>Software Engineering – A Precise Approach, Pankaj Jalote, Wiley India, 2012</li>
+                    <li>Software Engineering–A Practitioner’s Approach, Roger S. Pressman, 7E., McGraw Hill</li>
+                    <li>Software Engineering, Ian Sommerville, 8Ed., Pearson Education</li>
+                    <li>Object Oriented Analysis and Design, John Deacon, Pearson Education</li>
+                    <li>Fundamentals of Software Engineering, Carlo Ghezzi, Jezayeri, Dino Mandrioli, 2 Ed, Pearson.</li>
+                    <li>Software Engineering– Principles and Practices, Deepak Jain, Oxford University Press.</li>
+                    <li>Software Engineering, Jibitesh Mishra and Ashok Mohanty, Pearson Publ.</li>
+                    <li>Fundamentals of Software Engineering, Rajib Mall, PHI</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 405: Lab on Java Programming</h4>
+                <p><strong>Total Lab Class = 60</strong></p>
+                <p><strong>Exercise - 1 (Basics)</strong> a). Write a JAVA program to display default value of all primitive data type of JAVA b). Write a java program that display the roots of a quadratic equation ax2+bx=0. Calculate c) Write a case study on public static void main(250 words)</p>
+                <p><strong>Exercise - 2 (Operations, Expressions, Control-flow, Strings)</strong> (d) Write a JAVA program using String Buffer to delete, remove character.</p>
+                <p><strong>Exercise - 3 (Class, Objects)</strong> e). Write a JAVA program to implement class mechanism. – Create a class, methods and invoke them inside main method. f). Write a JAVA program to implement constructor.</p>
+                <p><strong>Exercise - 4 (Methods)</strong> a). Write a JAVA program to implement constructor overloading. b). Write a JAVA program implement method overloading.</p>
+                <p><strong>Exercise - 5 (Inheritance)</strong> a). Write a JAVA program to implement Single Inheritance b). Write a JAVA program to implement multi level Inheritance c). Write a java program for abstract class implementation</p>
+                <p><strong>Exercise - 6 (Inheritance - Continued)</strong> a). Write a JAVA program give example for “super” keyword. b). Write a JAVA program to implement Interface. What kind of Inheritance can be achieved?</p>
+                <p><strong>Exercise - 7 (Exception)</strong> a).Write a JAVA program that describes exception handling mechanism b).Write a JAVA program Illustrating Multiple catch clauses</p>
+                <p><strong>Exercise – 8 (Runtime Polymorphism)</strong> a). Write a JAVA program that implements Runtime polymorphism b). Write a Case study on run time polymorphism, inheritance that implements in above problem</p>
+                <p><strong>Exercise – 9 (User defined Exception)</strong> a). Write a JAVA program for creation of Illustrating throw</p>
+                <p><strong>Exercise – 10 (Threads)</strong> a). Write a JAVA program that creates threads by extending Thread class . b). Write a program illustrating isAlive and join ()</p>
+                <p><strong>Exercise – 11 (Packages)</strong> a). Create package and call it in another class. b). Write a JAVA program that import and use the defined package in new package.</p>
+                <p><strong>Exercise - 12 (Applet)</strong> a).Write a JAVA program to paint like paint brush in applet. b) Write a JAVA program to display analog clock using Applet. c) Write a Java program that takes input</p>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 406: Lab on Computer Graphics & Linux</h4>
+                <p><strong>Total Lab Classes = 60</strong></p>
+                <p><strong>A) Computer Graphics & Multimedia</strong></p>
+                <p><strong>Unit I:</strong> i) Write a Programme to draw a colourful Pixel ii) Write a Programme to draw a line.</p>
+                <p><strong>Unit II:</strong> Write Programmes to draw a different shapes i.) Rectangles ii.) Cirles iii.) Square iv.) Arrow v.) Zooming of Circles vi.) Zooming of Rectangles</p>
+                <p><strong>Unit III:</strong> i) Write a Programme to draw a Indian Flag i) Write a Programme to draw Indian Flag ii) Write a Programme to draw Chess Board</p>
+                <p><strong>Unit IV:</strong> i) Draw a Line Using Bresenham's Algorithm ii) Draw a Line Using DDA Algorithm</p>
+                <p><strong>Unit V:</strong> i). Write a program to fill a polygon using Scan line fill algorithm. ii) Write programs to apply various 2D transformations on a 2D object (use homogeneous coordinates). iii) Write programs to apply various 3D transformations on a 3D object (use homogeneous coordinates).</p>
+                <p><strong>B) UNIX/LINUX</strong></p>
+                <p>Use of following UNIX/LINUX commands: cat, cal, ls, mkdir, rmdir, cd, rm, mv, cp, vi, chmod, chown, echo, bc, expr</p>
+                <p>Shell programs related to following: Use of shell variables Use of if else fi statement Use of case esac statement Use of while do done statement Use of until do done statement Use of for loop</p>
+                <p>A Mini Project</p>
+            </section>
+
+            <!-- 5th Semester -->
+            <section id="semester-5" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">5<sup>TH</sup> SEMESTER</h3>
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th>Paper Code</th>
+                            <th>Paper Title</th>
+                            <th>Internal Marks</th>
+                            <th>External Marks</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BCA-501</td><td>Relational Database Management System</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-502</td><td>Artificial Intelligence through Python Programming</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-503</td><td>Web Technology (HTML, Java Script, CSS)</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-504</td><td>Computer Network, Security and Cyber Law</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-505</td><td>Lab on Oracle</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td>BCA-506</td><td>Lab on Python Programming & Web Technology</td><td>20</td><td>80</td><td>100</td></tr>
+                        <tr><td></td><td>TOTAL MARKS</td><td>120</td><td>480</td><td>600</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 501: Relational Database Management System</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I:</strong> Introduction & features: Concept of RDBMS, Properties of RDBMS, CODD commandments SQL plus Data manipulations in RDBMS Oracle data type Table Creation, insertion, updation, deletion of data contents Modification of structure Removing, deleting, dropping of tables Select command</p>
+                <p><strong>Unit II:</strong> Data constraints Column level & table level constructions, Null, unique key, default, foreign key reference, CHECK integrity constraints, Defining different constraints on the table, Defining integrity constraints in the alter table command.</p>
+                <p><strong>Unit III:</strong> Computations in Expression Lists used to Select Data Logical operators, Range searching, Pattern searching, Oracle functions, Grouping data frame table in SQL, Manipulations data in SQL Joins Joining multiple tables (equi-joins ), Joining table to itself (self joins) sub queries Union, intersect & minus clause.</p>
+                <p><strong>Unit IV:</strong> Indexes Views Creation, updation, destroying, selections of data, Renaming the column of view, Granting permissions, Permission on the objects created by the user, GRANT statement, Object privileges, Referencing the tables to the another user, Revoking the permissions given</p>
+                <p><strong>Unit V: PL/SQL</strong> Performance, portability, data types, character set, syntax, block structure Oracle transactions Locks</p>
+                <p><strong>Unit VI:</strong> Cursors Error handling Procedure and functions Concept, creation, execution, advantages, syntax, deletion Triggers Concept, use, how to apply database triggers, type of triggers syntax, deleting</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>SQL & PL/SQL For Oracle 11g Black Book, Dr. P.S.Deshpande, Dreamtech Press</li>
+                    <li>SQL, PL/SQL The Programming Language Of Oracle , Ivan Bayross,</li>
+                    <li>Commercial Application Development using Oracle Developer 2000, Ivan Bayross, BPB Publ.</li>
+                    <li>Learning Oracle SQL and PL/SQL- A Simplified Approach, Rajeeb C. Chatterjee,PHI</li>
+                    <li>Oracle - The Complete Reference, Oracle Press, TMH Edition.</li>
+                    <li>SQL- A Complete Reference, Alexis Leon & Mathews Leon, TMH</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 502: Artificial Intelligence through Python</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Introduction to Python</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1.1 Installation and Working with Python</li>
+                    <li>1.2 Understanding Python variables</li>
+                    <li>1.3 Python basic Operators</li>
+                    <li>1.4 Understanding python blocks</li>
+                    <li>1.5 Declaring and using Numeric data types: int, float, complex</li>
+                    <li>1.6 Using string data type and string operations</li>
+                    <li>1.7 Defining list and list slicing</li>
+                    <li>1.8 Use of Tuple data type</li>
+                    <li>1.9 Conditional blocks using if, else and elif</li>
+                    <li>1.10 Simple for loops in python</li>
+                    <li>1.11 For loop using ranges, string, list and dictionaries</li>
+                    <li>1.12 Use of while loops in python</li>
+                    <li>1.13 Loop manipulation using pass, continue, break and else</li>
+                    <li>1.14 Programming using Python conditional and loops block</li>
+                </ul>
+                <p><strong>Unit – II Python Functions, Modules And Packages</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>2.1 Organizing python codes using functions</li>
+                    <li>2.2 Understanding Packages</li>
+                    <li>2.3 Powerful Lambda function in python</li>
+                    <li>2.4 Programming using functions, modules and external packages</li>
+                    <li>2.5 Understanding string in build methods</li>
+                    <li>2.6 List manipulation using in build methods</li>
+                    <li>2.7 Dictionary manipulation</li>
+                </ul>
+                <p><strong>Unit – III: Python File Operation</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>3.1 Reading config files in python</li>
+                    <li>3.2 Writing log files in python</li>
+                    <li>3.3 Understanding read functions, read(), readline() and readlines()</li>
+                    <li>3.4 Understanding write functions, write() and writelines()</li>
+                    <li>3.5 Powerful pattern matching and searching</li>
+                    <li>3.6 Password, email, url validation using regular expression</li>
+                </ul>
+                <p><strong>Unit – IV: Python Exception Handling and Data Base</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>4.1 Avoiding code break using exception handling</li>
+                    <li>4.2 Safe guarding file operation using exception handling</li>
+                    <li>4.3 SQL Database connection using python</li>
+                    <li>4.4 Creating and searching tables</li>
+                    <li>4.8 Programming using database connections</li>
+                </ul>
+                <p><strong>Artificial Intelligence:</strong></p>
+                <p><strong>Unit – V: Search</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>5.1 Uninformed</li>
+                    <li>5.2 Informed</li>
+                    <li>5.3 Mini-Max for Game Playing</li>
+                </ul>
+                <p><strong>Unit – VI:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>6.1 Task Planning</li>
+                    <li>6.2 Robot Motion Planning</li>
+                    <li>6.3 Supervised Learning</li>
+                    <li>6.4 Unsupervised Learning</li>
+                    <li>6.5 Reinforcement Learning</li>
+                </ul>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Dan.W. Patterson, Introduction to A.I and Expert Systems – PHI, 2010</li>
+                    <li>Russell & Norvig, Artificial Intelligence- A Modern Approach, LPE, Pearson Prentice Hall, 2005.</li>
+                    <li>Mark Pilgrim , A press, “Dive Into Python”</li>
+                    <li>Swapnil Saurav, Ekapress (2018), Learn and Practice Python</li>
+                    <li>Rajendra Akerkar, Introduction to Artificial Intelligence, PHI</li>
+                    <li>Stuart Russel, Peter Norvig, Artificial Intelligence-A Modern Approach, Pearson</li>
+                    <li>N.P.Padhy, Artificial Intelligence and Intelligent Systems, Oxford Univ. Press</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 503: Web Technology (HTML, Java Script, CSS)</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Fundamentals:</strong> WWW, Internet, Web Browsers, Web Servers, URLs, MIME, HTTP.</p>
+                <p><strong>Unit – II: HTML:</strong> Origins of HTML, Basic syntax, Standard HTML page structure, Text markup, Images, HyperLinks, Lists, Tables and Form.</p>
+                <p><strong>Unit – III: CSS:</strong> Introduction, Selectors, Font attributes, List attributes, Color, Alignment of text, The Box model, Background images, The <span> and <div> tags.</p>
+                <p><strong>Unit - IV: Java Script:</strong> Overview, Object notation, Operations, expressions, browser output, keyboard input, Control statements, Object creation, Arrays, Functions, Pattern matching using expressions, error handling, The Document Object Model, Element access, Events and event handling.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Robert W Sebesta, “Programming the World Wide Web” Pearson Education.</li>
+                    <li>M.Deitel, P.J.Deitel, A.B.Goldberg, “Internet & World Wide Web How to program”, Pearson.</li>
+                    <li>Chris Bates, “Web Programming Building Internet Applications”, Wiley India.</li>
+                    <li>Jibitesh Mishra, Joel Sklar, Don Gosselin, “The Web Warrior Guide to Web Design Technologies”, Cengage Learning India.</li>
+                    <li>Uttam K. Roy, “Web Technologies”, Oxford Press</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 504: Computer Network, Security and Cyber Law</h4>
+                <p><strong>Total Lectures = 50</strong></p>
+                <p><strong>Unit – I: Computer Network:</strong> Introduction: Definition, its use, goals and structure, network architecture, ISO reference model, Network Model, Connecting Devices, TCP/IP, UDP Network Topology: Topology Design process, connectivity analysis, Delay analysis, Backbone design, Logical Access Design.</p>
+                <p><strong>Unit – II: Physical Link Layer:</strong> Theoretical basis for data communication, Data and signal, Digital and Analog transmission, transmission media, Switching, multiplexing.</p>
+                <p><strong>Unit – III:</strong> Data Link protocols, Data Link controls, Sliding window protocols, Virtual circuits, Routing algorithms, Congestion, Examples of network layers, selected examples, Error detection and correction, Multiple Access, Congestion control, Framing, MAC Sublayer. IPv4, IPv6 Address, ICMP, IGMP</p>
+                <p><strong>Unit – IV: Network Security:</strong> Introduction: Security Overview, Cyber security fundamentals, Security System design architecture, The OSI Security Architecture tools and techniques, Current Vulnerabilities - Different Security attacks, Countermeasures, Security Services, Model for Network Security. Symmetric Cipher: Classical Encryption techniques, Symmetric Cipher Model, Block Cipher Design principles – Feistel Structure, DES, Triple DES, Advanced Encryption Standard (AES), Stream Cipher and RC4.</p>
+                <p><strong>Unit-V:</strong> Public Key Encryption: Message Authentication, RSA Algorithm, Digital Signature. Network Security Algorithms: Kerberos, X.509, Authentication Services. System Security: Intrusion Detection, Password management, Virus countermeasure, Firewall.</p>
+                <p><strong>Unit – VI:</strong> Introductory Concept of Cyber Laws: IT Laws, policies and Government Regulations – Global, IT Act – India.</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Computer Networks, A.S.Taenenbaum, Pearson</li>
+                    <li>Data Communications and Networking, Behrouz Forouzan, TMH</li>
+                    <li>Computer Networks, William Stallings, Pearson</li>
+                    <li>Computer Networks and Internets, Douglas E. Comer, Pearson</li>
+                    <li>Data Communications and Computer Networks, Prakash C. Gupta, PHI</li>
+                    <li>Network Security Essentials – Applications and standards, William Stallings, Pearson.</li>
+                    <li>Cryptography and Network Security– Principles and Practices, W. Stallings, Pearson, 2018</li>
+                    <li>Cryptography and Network Security, Behrouz Forouzon, TMH</li>
+                    <li>Introduction to Cryptography, Johannes A. Buchmann, Springer</li>
+                    <li>Security in Computing, Charles P. Pfleeger and S.L.Pfleeger, Pearson, 4e, 2011.</li>
+                    <li>Cyber Law – The Indian Perspective, Pawan Duggal, Saakshar Law Publications</li>
+                    <li>CYBER SECURITY LAW Kindle Edition, by PAVAN DUGGAL</li>
+                    <li>Cyber Law Simplified, by Vivek Sood, TMH</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 505: Lab on Oracle</h4>
+                <p><strong>Total Lab Class = 60</strong></p>
+                <p>SQL commands Create, alter, drop, truncate, rename Constraints- Primary key, unique, null, foreign key, default, check Select, insert, update, delete, connect, revoke, grant, rollback, commit Oracle functions, index, views (creation, deletion, updating, inserting) Locking, Making Procedure, Making functions, Cursor programs, Triggers programs</p>
+                <p><strong>Text Books:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>SQL & PL/SQL For Oracle 11g Black Book, Dr. P.S.Deshpande, Dreamtech Press</li>
+                    <li>SQL, PL/SQL The Programming Language Of Oracle , Ivan Bayross,</li>
+                </ul>
+
+                <h4 class="text-2xl font-semibold mt-6 mb-3">BCA – 506: Lab on Python & Web Technology:</h4>
+                <p><strong>Total Lab Class = 60</strong></p>
+                <p><strong>Python Programming</strong></p>
+                <p><strong>Program 1.</strong> Using for loop, print a table of Celsius/Fahrenheit equivalences. Let c be the Celsius temperatures ranging from 0 to 100, for each value of c, print the corresponding Fahrenheit temperature.</p>
+                <p><strong>Program 2.</strong> Using while loop, produce a table of sins, cosines and tangents. Make a variable x in range from 0 to 10 in steps of 0.2. For each value of x, print the value of sin(x), cos(x) and tan(x).</p>
+                <p><strong>Program 3.</strong> Write a program that reads an integer value and prints ―leap year‖ or ―not a leap year.</p>
+                <p><strong>Program 4.</strong> Write a program that takes a positive integer n and then produces n lines of output shown as follows. For example enter a size: 5 * ** *** **** *****</p>
+                <p><strong>Program 5.</strong> Write a function that takes an integer ‗n‘ as input and calculates the value of 1 + 1/1! + 1/2! + 1/3! + … + 1/n</p>
+                <p><strong>Program 6.</strong> Write a function that takes an integer input and calculates the factorial of that number.</p>
+                <p><strong>Program 7.</strong> Write a function that takes a string input and checks if it‘s a palindrome or not.</p>
+                <p><strong>Program 8.</strong> Write a list function to convert a string into a list, as in list (‗abc‘) gives [a, b, c].</p>
+                <p><strong>Program 9.</strong> Write a program to generate Fibonacci series.</p>
+                <p><strong>Program 10.</strong> Write a program to check whether the input number is even or odd.</p>
+                <p><strong>Program 11.</strong> Write a program to compare three numbers and print the largest one.</p>
+                <p><strong>Program 12.</strong> Write a program to print factors of a given number.</p>
+                <p><strong>Program 13.</strong> Write a method to calculate GCD of two numbers.</p>
+                <p><strong>Program 14.</strong> Write a program to create Stack Class and implement all its methods. (Use Lists).</p>
+                <p><strong>Program 15.</strong> Write a program to create Queue Class and implement all its methods. (Use Lists)</p>
+                <p><strong>Program 16.</strong> Write a program to implement linear and binary search on lists.</p>
+                <p><strong>Program 17.</strong> Write a program to sort a list using insertion sort and bubble sort and selection sort.</p>
+                <p><strong>Web Technology:</strong> HTML code for sign up, sign in, forgot password pages. CSS code to control the appearance of form elements of the HTML page. JavaScript program to: check whether a number is even or odd check whether a year is leap or not find factorial of a number display table of a number validate input elements of a signup page similar programs based on array, function. even based coding.</p>
+                <p>A Mini Project</p>
+            </section>
+
+            <!-- 6th Semester -->
+            <section id="semester-6" class="syllabus-section">
+                <h3 class="text-3xl font-bold mb-4">6<sup>TH</sup> SEMESTER</h3>
+                <p><strong>BCA-601:- Project Report:</strong>- A project work will be done by all the students separately or in a group containing 4 or 5 students on a topic assigned by the Guide(any of the faculty of the College). The student will complete their project under the supervision of the Guide and submit the report in hard and soft copy at the time of evaluation.</p>
+                <p><strong>BCA-602:- Seminar:</strong>- A Departmental Seminar will be organised and students will have to present a paper in the seminar.</p>
+                <p><strong>BCA-603:- Viva:</strong>- A viva-voce of 50 Marks will be conducted by the external examiners(appointed by the University/Examination Board) covering the papers studied by students in 1st to 5th Semesters.</p>
+                <p>TOTAL MARKS $=3200$</p>
+                <p>Pattern of Question Paper:- There will be ten long answer type questions out of which students will have to answer 5 questions. Each question will carry equal marks. Duration of Exam: 3 Hours for each Theory and Practical Paper</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Search Results Dialog -->
+    <div id="searchResultsDialog" class="search-results-dialog">
+        <button class="close-button" onclick="closeSearchResults()">X</button>
+        <h3 class="text-center">Search Results</h3>
+        <div id="resultsContent">
+            <!-- Search results will be injected here -->
+        </div>
+        <p id="noResultsMessage" class="text-center text-gray-600 italic hidden">No results found.</p>
+    </div>
+
+    <!-- Overlay for dialog -->
+    <div id="overlay" class="overlay" onclick="closeSearchResults()"></div>
+
+    <script>
+        const syllabusData = [];
+        // Populate syllabusData from the HTML content for searching
+        document.querySelectorAll('section.syllabus-section').forEach(section => {
+            const semesterId = section.id;
+            const semesterTitle = section.querySelector('h3').innerText;
+            const content = section.innerText; // Get all text content
+            syllabusData.push({
+                id: semesterId,
+                title: semesterTitle,
+                content: content
+            });
+        });
+
+        document.getElementById('searchButton').addEventListener('click', performSearch);
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContent = document.getElementById('resultsContent');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            resultsContent.innerHTML = ''; // Clear previous results
+            noResultsMessage.classList.add('hidden');
+
+            if (searchTerm.trim() === '') {
+                noResultsMessage.textContent = 'Please enter a search term.';
+                noResultsMessage.classList.remove('hidden');
+                openSearchResults();
+                return;
+            }
+
+            let foundResults = false;
+            syllabusData.forEach(item => {
+                if (item.content.toLowerCase().includes(searchTerm)) {
+                    foundResults = true;
+                    const resultDiv = document.createElement('div');
+                    resultDiv.classList.add('search-result-item', item.id); // Add semester class for coloring
+                    resultDiv.innerHTML = `
+                        <strong>${item.title}</strong>
+                        <p>${highlightText(item.content, searchTerm).substring(0, 300)}...</p>
+                        <a href="#${item.id}" class="text-blue-600 hover:underline mt-2 inline-block" onclick="closeSearchResults()">Go to section</a>
+                    `;
+                    resultsContent.appendChild(resultDiv);
+                }
+            });
+
+            if (!foundResults) {
+                noResultsMessage.textContent = `No results found for "${searchTerm}".`;
+                noResultsMessage.classList.remove('hidden');
+            }
+
+            openSearchResults();
+        }
+
+        function highlightText(text, searchTerm) {
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<mark class="bg-yellow-200 rounded px-1">$&</mark>');
+        }
+
+        function openSearchResults() {
+            document.getElementById('searchResultsDialog').classList.add('show');
+            document.getElementById('overlay').classList.add('show');
+        }
+
+        function closeSearchResults() {
+            document.getElementById('searchResultsDialog').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
